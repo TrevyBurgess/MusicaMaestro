@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "CyberFeedForward.MusicaMaestro (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "CyberFeedForward.MusicaMaestro (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

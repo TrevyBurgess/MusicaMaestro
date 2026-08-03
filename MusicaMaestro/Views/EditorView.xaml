@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Page
+    x:Class="CyberFeedForward.MusicaMaestro.Views.EditorView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:CyberFeedForward.MusicaMaestro.ViewModels"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Padding="24,16,24,16" RowSpacing="24">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{x:Bind ViewModel.Title, Mode=OneWay}" />
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="16">
+            <TextBox MinWidth="240" Text="{x:Bind ViewModel.ProjectName, Mode=TwoWay}" />
+            <Slider MinWidth="200" Maximum="240" Minimum="40" Value="{x:Bind ViewModel.Tempo, Mode=TwoWay}" />
+            <TextBlock VerticalAlignment="Center" Text="{x:Bind ViewModel.Tempo, Mode=OneWay}" />
+        </StackPanel>
+        <ListView
+            Grid.Row="2"
+            ItemsSource="{x:Bind ViewModel.Tracks, Mode=OneWay}">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="local:TrackViewModel">
+                    <Grid ColumnSpacing="16">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="120" />
+                            <ColumnDefinition Width="80" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{x:Bind Title}" />
+                        <TextBlock Grid.Column="1" Foreground="{ThemeResource TextFillColorSecondaryBrush}" Text="{x:Bind Instrument}" />
+                        <TextBlock Grid.Column="2" Foreground="{ThemeResource TextFillColorSecondaryBrush}" Text="{x:Bind Duration}" />
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>
