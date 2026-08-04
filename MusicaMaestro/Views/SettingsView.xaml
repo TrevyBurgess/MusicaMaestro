@@ -24,6 +24,27 @@
                 <ComboBoxItem x:Name="ThemeModeLightItem" Content="Light" />
                 <ComboBoxItem x:Name="ThemeModeDarkItem" Content="Dark" />
             </ComboBox>
+
+            <Grid ColumnSpacing="8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBox
+                    x:Name="SoundClipsPathTextBox"
+                    Grid.Column="0"
+                    AutomationProperties.Name="SoundClips folder path"
+                    Header="SoundClips folder"
+                    IsReadOnly="True"
+                    Text="{Binding SoundClipsPath, Mode=OneWay}" />
+                <Button
+                    x:Name="BrowseSoundClipsButton"
+                    Grid.Column="1"
+                    AutomationProperties.Name="Browse for SoundClips folder"
+                    Click="BrowseSoundClipsButton_Click"
+                    Content="Browse..."
+                    VerticalAlignment="Bottom" />
+            </Grid>
         </StackPanel>
     </Grid>
 </Page>

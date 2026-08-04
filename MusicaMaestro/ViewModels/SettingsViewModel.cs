@@ -10,20 +10,20 @@ public class SettingsViewModel : ViewModelBase
     {
         _model = new SettingsModel();
         Title = "Settings";
-        IsDarkTheme = _model.IsDarkTheme;
-        AreNotificationsEnabled = _model.AreNotificationsEnabled;
-        DefaultTempo = _model.DefaultTempo;
     }
 
     public string Title { get; }
 
-    public bool IsDarkTheme
+    public event Action<int>? ThemeChanged;
+
+    public int ThemeModeIndex
     {
-        get => _model.IsDarkTheme;
+        get => _model.ThemeModeIndex;
         set
         {
-            _model.IsDarkTheme = value;
+            _model.ThemeModeIndex = value;
             OnPropertyChanged();
+            ThemeChanged?.Invoke(value);
         }
     }
 
@@ -43,6 +43,16 @@ public class SettingsViewModel : ViewModelBase
         set
         {
             _model.DefaultTempo = value;
+            OnPropertyChanged();
+        }
+    }
+
+    public string SoundClipsPath
+    {
+        get => _model.SoundClipsPath;
+        set
+        {
+            _model.SoundClipsPath = value;
             OnPropertyChanged();
         }
     }

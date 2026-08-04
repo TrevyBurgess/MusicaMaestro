@@ -1,4 +1,5 @@
-﻿using Microsoft.UI.Xaml;
+﻿using CyberFeedForward.MusicaMaestro.Models;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
@@ -16,6 +17,8 @@ namespace CyberFeedForward.MusicaMaestro;
 public partial class App : Application
 {
     private Window? _window;
+
+    public Window? MainWindow => _window;
     
     /// <summary>
     /// Initializes the singleton application object.  This is the first line of authored code
@@ -34,5 +37,23 @@ public partial class App : Application
     {
         _window = new MainWindow();
         _window.Activate();
+
+        var settings = new SettingsModel();
+        SetTheme(settings.ThemeModeIndex);
+    }
+
+    public void SetTheme(int themeModeIndex)
+    {
+        if (MainWindow?.Content is not FrameworkElement root)
+        {
+            return;
+        }
+
+        root.RequestedTheme = themeModeIndex switch
+        {
+            1 => ElementTheme.Light,
+            2 => ElementTheme.Dark,
+            _ => ElementTheme.Default
+        };
     }
 }

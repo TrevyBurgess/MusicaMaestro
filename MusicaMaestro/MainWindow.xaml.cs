@@ -3,7 +3,9 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Input;
+using CyberFeedForward.MusicaMaestro.Models;
 using CyberFeedForward.MusicaMaestro.Views;
+using Windows.Graphics;
 using Windows.System;
 
 namespace CyberFeedForward.MusicaMaestro;
@@ -12,6 +14,8 @@ public sealed partial class MainWindow : Window
 {
     private const double MinOpenPaneLength = 120.0;
     private const double MaxOpenPaneLength = 600.0;
+    private readonly SettingsModel _settings;
+    private bool _hasRestoredPosition;
 
     public MainWindow()
     {
@@ -22,16 +26,48 @@ public sealed partial class MainWindow : Window
         AppWindow.TitleBar.PreferredHeightOption = TitleBarHeightOption.Tall;
         AppWindow.SetIcon("Assets/AppIcon.ico");
 
+        _settings = new SettingsModel();
+        NavView.OpenPaneLength = _settings.NavigationPaneWidth;
+        NavView.IsPaneOpen = _settings.IsNavigationPaneOpen;
+
         PaneResizer.Visibility = NavView.IsPaneOpen ? Visibility.Visible : Visibility.Collapsed;
         PaneResizer.Margin = new Thickness(NavView.OpenPaneLength - PaneResizer.Width, 0, 0, 0);
 
         NavView.RegisterPropertyChangedCallback(NavigationView.IsPaneOpenProperty, OnNavViewIsPaneOpenChanged);
         NavView.RegisterPropertyChangedCallback(NavigationView.OpenPaneLengthProperty, OnNavViewOpenPaneLengthChanged);
+
+        Activated += OnActivated;
+        Closed += OnClosed;
+    }
+
+    private void OnActivated(object _, WindowActivatedEventArgs __)
+    {
+        if (_hasRestoredPosition)
+        {
+            return;
+        }
+
+        _hasRestoredPosition = true;
+
+        if (_settings.MainWindowWidth > 0 && _settings.MainWindowHeight > 0)
+        {
+            AppWindow.Move(new PointInt32(_settings.MainWindowX, _settings.MainWindowY));
+            AppWindow.Resize(new SizeInt32(_settings.MainWindowWidth, _settings.MainWindowHeight));
+        }
+    }
+
+    private void OnClosed(object _, WindowEventArgs __)
+    {
+        _settings.MainWindowX = AppWindow.Position.X;
+        _settings.MainWindowY = AppWindow.Position.Y;
+        _settings.MainWindowWidth = AppWindow.Size.Width;
+        _settings.MainWindowHeight = AppWindow.Size.Height;
     }
 
     private void TitleBar_PaneToggleRequested(TitleBar _, object __)
     {
         NavView.IsPaneOpen = !NavView.IsPaneOpen;
+        _settings.IsNavigationPaneOpen = NavView.IsPaneOpen;
     }
 
     private void TitleBar_BackRequested(TitleBar _, object __)
@@ -75,6 +111,7 @@ public sealed partial class MainWindow : Window
     private void OnNavViewOpenPaneLengthChanged(DependencyObject sender, DependencyProperty dp)
     {
         PaneResizer.Margin = new Thickness(NavView.OpenPaneLength - PaneResizer.Width, 0, 0, 0);
+        _settings.NavigationPaneWidth = NavView.OpenPaneLength;
     }
 
     private void PaneResizer_DragDelta(object _, DragDeltaEventArgs e)
