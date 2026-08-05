@@ -9,8 +9,8 @@
 - Create a FirstRun service that runs on app startup. When running for the first time, open a dialog for customizing the app.
 - Set default path of SoundClipsPath to Music\SoundClips.
 - Show only OK button on FirstRunDialog
-- Show first run dialog when app starts. 
 
+- Show first run dialog when app starts. 
 - Add a button to setting panel. when clicked, reset all settings to their default values
 
 
