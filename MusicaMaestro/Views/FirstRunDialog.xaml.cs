@@ -1,36 +1,33 @@
+using CyberFeedForward.MusicaMaestro.ViewModels;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using CyberFeedForward.MusicaMaestro.ViewModels;
 
 namespace CyberFeedForward.MusicaMaestro.Views;
 
-public sealed partial class SettingsView : Page
+public sealed partial class FirstRunDialog : ContentDialog
 {
-    public SettingsViewModel ViewModel { get; } = new SettingsViewModel();
-
-    public SettingsView()
+    public FirstRunDialog()
     {
         InitializeComponent();
+        ViewModel = new SettingsViewModel();
         DataContext = ViewModel;
-        ViewModel.ThemeChanged += OnThemeChanged;
     }
 
-    private void OnThemeChanged(int themeModeIndex)
+    public FirstRunDialog(SettingsViewModel viewModel)
+        : this()
     {
-        if (Application.Current is App app)
-        {
-            app.SetTheme(themeModeIndex);
-        }
+        ViewModel = viewModel;
+        DataContext = viewModel;
     }
+
+    public SettingsViewModel ViewModel { get; private set; } = null!;
 
     private async void BrowseSoundClipsButton_Click(object sender, RoutedEventArgs e)
     {
         try
         {
-            var picker = new Windows.Storage.Pickers.FolderPicker
-            {
-                SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.MusicLibrary
-            };
+            var picker = new Windows.Storage.Pickers.FolderPicker();
+            picker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.MusicLibrary;
             picker.FileTypeFilter.Add("*");
 
             if (Application.Current is App app && app.MainWindow is not null)
@@ -47,19 +44,14 @@ public sealed partial class SettingsView : Page
         }
         catch (Exception ex)
         {
-            var dialog = new ContentDialog
+            var errorDialog = new ContentDialog
             {
                 XamlRoot = XamlRoot,
                 Title = "Error",
                 Content = $"Failed to select the SoundClips folder: {ex.Message}",
                 CloseButtonText = "OK"
             };
-            await dialog.ShowAsync();
+            await errorDialog.ShowAsync();
         }
-    }
-
-    private void ResetToDefaultsButton_Click(object sender, RoutedEventArgs e)
-    {
-        ViewModel.Reset();
     }
 }

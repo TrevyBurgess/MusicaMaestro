@@ -1,4 +1,5 @@
 ﻿using CyberFeedForward.MusicaMaestro.Models;
+using CyberFeedForward.MusicaMaestro.Services;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Data;
@@ -33,13 +34,16 @@ public partial class App : Application
     /// Invoked when the application is launched.
     /// </summary>
     /// <param name="args">Details about the launch request and process.</param>
-    protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
+    protected override async void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
     {
         _window = new MainWindow();
         _window.Activate();
 
         var settings = new SettingsModel();
         SetTheme(settings.ThemeModeIndex);
+
+        var firstRunService = new FirstRunService();
+        await FirstRunService.InitializeAsync(_window);
     }
 
     public void SetTheme(int themeModeIndex)

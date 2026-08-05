@@ -4,31 +4,37 @@ namespace CyberFeedForward.MusicaMaestro.Models;
 
 public class SettingsModel
 {
-    private const string ThemeModeIndexKey = "ThemeModeIndex";
-    private const string AreNotificationsEnabledKey = "AreNotificationsEnabled";
-    private const string DefaultTempoKey = "DefaultTempo";
-    private const string SoundClipsPathKey = "SoundClipsPath";
-    private const string NavigationPaneWidthKey = "NavigationPaneWidth";
-    private const string IsNavigationPaneOpenKey = "IsNavigationPaneOpen";
-    private const string MainWindowXKey = "MainWindowX";
-    private const string MainWindowYKey = "MainWindowY";
-    private const string MainWindowWidthKey = "MainWindowWidth";
-    private const string MainWindowHeightKey = "MainWindowHeight";
-
-    private int _themeModeIndex;
-    private bool _areNotificationsEnabled = true;
-    private int _defaultTempo = 120;
-    private string _soundClipsPath = string.Empty;
-    private double _navigationPaneWidth = 320.0;
-    private bool _isNavigationPaneOpen = true;
-    private int _mainWindowX;
-    private int _mainWindowY;
-    private int _mainWindowWidth;
-    private int _mainWindowHeight;
+    public const string ThemeModeIndexKey = "ThemeModeIndex";
+    public const string AreNotificationsEnabledKey = "AreNotificationsEnabled";
+    public const string DefaultTempoKey = "DefaultTempo";
+    public const string SoundClipsPathKey = "SoundClipsPath";
+    public const string NavigationPaneWidthKey = "NavigationPaneWidth";
+    public const string IsNavigationPaneOpenKey = "IsNavigationPaneOpen";
+    public const string MainWindowXKey = "MainWindowX";
+    public const string MainWindowYKey = "MainWindowY";
+    public const string MainWindowWidthKey = "MainWindowWidth";
+    public const string MainWindowHeightKey = "MainWindowHeight";
+    public const string FirstRunCompletedKey = "FirstRunCompletedKey";
 
     public SettingsModel()
     {
-        Load();
+        var settings = ApplicationData.Current.LocalSettings;
+        _themeModeIndex = GetValue(settings, ThemeModeIndexKey, 0);
+        _areNotificationsEnabled = GetValue(settings, AreNotificationsEnabledKey, true);
+        _defaultTempo = GetValue(settings, DefaultTempoKey, 120);
+
+        var defaultSoundClipsPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic), "SoundClips");
+
+        _soundClipsPath = GetValue(settings, SoundClipsPathKey, defaultSoundClipsPath);
+
+        _navigationPaneWidth = GetValue(settings, NavigationPaneWidthKey, 150.0);
+        _isNavigationPaneOpen = GetValue(settings, IsNavigationPaneOpenKey, true);
+        _mainWindowX = GetValue(settings, MainWindowXKey, 0);
+        _mainWindowY = GetValue(settings, MainWindowYKey, 0);
+        _mainWindowWidth = GetValue(settings, MainWindowWidthKey, 0);
+        _mainWindowHeight = GetValue(settings, MainWindowHeightKey, 0);
+
+        _FirstRunCompleted = GetValue(settings, FirstRunCompletedKey, false);
     }
 
     public int ThemeModeIndex
@@ -40,6 +46,7 @@ public class SettingsModel
             Save(ThemeModeIndexKey, value);
         }
     }
+    private int _themeModeIndex;
 
     public bool AreNotificationsEnabled
     {
@@ -50,6 +57,7 @@ public class SettingsModel
             Save(AreNotificationsEnabledKey, value);
         }
     }
+    private bool _areNotificationsEnabled;
 
     public int DefaultTempo
     {
@@ -60,16 +68,21 @@ public class SettingsModel
             Save(DefaultTempoKey, value);
         }
     }
+    private int _defaultTempo = 120;
 
     public string SoundClipsPath
     {
-        get => _soundClipsPath;
+        get
+        {
+            return _soundClipsPath;
+        }
         set
         {
             _soundClipsPath = value;
             Save(SoundClipsPathKey, value);
         }
     }
+    private string _soundClipsPath;
 
     public double NavigationPaneWidth
     {
@@ -80,6 +93,7 @@ public class SettingsModel
             Save(NavigationPaneWidthKey, value);
         }
     }
+    private double _navigationPaneWidth;
 
     public bool IsNavigationPaneOpen
     {
@@ -90,6 +104,7 @@ public class SettingsModel
             Save(IsNavigationPaneOpenKey, value);
         }
     }
+    private bool _isNavigationPaneOpen;
 
     public int MainWindowX
     {
@@ -100,6 +115,7 @@ public class SettingsModel
             Save(MainWindowXKey, value);
         }
     }
+    private int _mainWindowX;
 
     public int MainWindowY
     {
@@ -110,6 +126,7 @@ public class SettingsModel
             Save(MainWindowYKey, value);
         }
     }
+    private int _mainWindowY;
 
     public int MainWindowWidth
     {
@@ -120,6 +137,7 @@ public class SettingsModel
             Save(MainWindowWidthKey, value);
         }
     }
+    private int _mainWindowWidth;
 
     public int MainWindowHeight
     {
@@ -130,23 +148,34 @@ public class SettingsModel
             Save(MainWindowHeightKey, value);
         }
     }
+    private int _mainWindowHeight;
 
-    private void Load()
+    public bool FirstRunCompleted
     {
-        var settings = ApplicationData.Current.LocalSettings;
-        _themeModeIndex = GetValue(settings, ThemeModeIndexKey, 0);
-        _areNotificationsEnabled = GetValue(settings, AreNotificationsEnabledKey, true);
-        _defaultTempo = GetValue(settings, DefaultTempoKey, 120);
-        _soundClipsPath = GetValue(settings, SoundClipsPathKey, string.Empty);
-        _navigationPaneWidth = GetValue(settings, NavigationPaneWidthKey, 320.0);
-        _isNavigationPaneOpen = GetValue(settings, IsNavigationPaneOpenKey, true);
-        _mainWindowX = GetValue(settings, MainWindowXKey, 0);
-        _mainWindowY = GetValue(settings, MainWindowYKey, 0);
-        _mainWindowWidth = GetValue(settings, MainWindowWidthKey, 0);
-        _mainWindowHeight = GetValue(settings, MainWindowHeightKey, 0);
+        get => _FirstRunCompleted;
+        set
+        {
+            _FirstRunCompleted = value;
+            Save(FirstRunCompletedKey, value);
+        }
+    }
+    private bool _FirstRunCompleted;
+
+    public void ResetToDefaults()
+    {
+        ThemeModeIndex = 0;
+        AreNotificationsEnabled = true;
+        DefaultTempo = 120;
+        SoundClipsPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic), "SoundClips");
+        NavigationPaneWidth = 150.0;
+        FirstRunCompleted = true;
+        MainWindowX = 0;
+        MainWindowY = 0;
+        MainWindowWidth = 0;
+        MainWindowHeight = 0;
     }
 
-    private void Save(string key, object value)
+    private static void Save(string key, object value)
     {
         var settings = ApplicationData.Current.LocalSettings;
         settings.Values[key] = value;

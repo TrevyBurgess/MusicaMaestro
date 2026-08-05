@@ -14,6 +14,12 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="obj\**" />
+    <EmbeddedResource Remove="obj\**" />
+    <None Remove="obj\**" />
+    <Page Remove="obj\**" />
+  </ItemGroup>
 
   <ItemGroup>
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -252,6 +258,189 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\Views\HomeView.g.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\Views\EditorView.g.i.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\Views\EditorView.g.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\Views\AboutView.g.i.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\Views\AboutView.g.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\MainWindow.g.i.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\MainWindow.g.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\CyberFeedForward.MusicaMaestro.GlobalUsings.g.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\CyberFeedForward.MusicaMaestro.AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\App.g.i.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\App.g.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\.NETCoreApp,Version=v10.0.AssemblyAttributes.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\XamlTypeInfo.g.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\Views\SettingsView.g.i.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\Views\SettingsView.g.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\Views\LibraryView.g.i.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\Views\LibraryView.g.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\Views\HomeView.g.i.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\Views\HomeView.g.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\Views\FirstRunDialog.g.i.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\Views\FirstRunDialog.g.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\Views\EditorView.g.i.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\Views\EditorView.g.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\Views\AboutView.g.i.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\Views\AboutView.g.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\MainWindow.g.i.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\MainWindow.g.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\CyberFeedForward.MusicaMaestro.GlobalUsings.g.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\CyberFeedForward.MusicaMaestro.AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\App.g.i.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\App.g.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\.NETCoreApp,Version=v10.0.AssemblyAttributes.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\XamlTypeInfo.g.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\Views\SettingsView.g.i.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\Views\SettingsView.g.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\Views\LibraryView.g.i.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\Views\LibraryView.g.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\Views\HomeView.g.i.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\Views\HomeView.g.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\Views\FirstRunDialog.g.i.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\Views\FirstRunDialog.g.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\Views\EditorView.g.i.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\Views\EditorView.g.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\Views\AboutView.g.i.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\Views\AboutView.g.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\MainWindow.g.i.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\MainWindow.g.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\CyberFeedForward.MusicaMaestro.GlobalUsings.g.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\CyberFeedForward.MusicaMaestro.AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\App.g.i.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\App.g.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\.NETCoreApp,Version=v10.0.AssemblyAttributes.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Remove="obj\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\XamlTypeInfo.g.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\Views\SettingsView.g.i.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\Views\SettingsView.g.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\Views\LibraryView.g.i.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\Views\LibraryView.g.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\Views\HomeView.g.i.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\Views\HomeView.g.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\Views\FirstRunDialog.g.i.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\Views\FirstRunDialog.g.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="D:\Dev\GitHub\MusicaMaestro\MusicaMaestro\obj\Debug\net10.0-windows10.0.26100.0\win-x64\Views\EditorView.g.i.cs" />

@@ -2,7 +2,7 @@ using CyberFeedForward.MusicaMaestro.Models;
 
 namespace CyberFeedForward.MusicaMaestro.ViewModels;
 
-public class SettingsViewModel : ViewModelBase
+public partial class SettingsViewModel : ViewModelBase
 {
     private readonly SettingsModel _model;
 
@@ -55,5 +55,17 @@ public class SettingsViewModel : ViewModelBase
             _model.SoundClipsPath = value;
             OnPropertyChanged();
         }
+    }
+
+    public void Reset()
+    {
+        _model.ResetToDefaults();
+
+        OnPropertyChanged(nameof(ThemeModeIndex));
+        OnPropertyChanged(nameof(AreNotificationsEnabled));
+        OnPropertyChanged(nameof(DefaultTempo));
+        OnPropertyChanged(nameof(SoundClipsPath));
+
+        ThemeChanged?.Invoke(ThemeModeIndex);
     }
 }
