@@ -15,6 +15,7 @@ public class SettingsModel
     public const string MainWindowWidthKey = "MainWindowWidth";
     public const string MainWindowHeightKey = "MainWindowHeight";
     public const string FirstRunCompletedKey = "FirstRunCompletedKey";
+    public const string SoundClipsFolderName = "SoundClips";
 
     public SettingsModel()
     {
@@ -23,9 +24,7 @@ public class SettingsModel
         _areNotificationsEnabled = GetValue(settings, AreNotificationsEnabledKey, true);
         _defaultTempo = GetValue(settings, DefaultTempoKey, 120);
 
-        var defaultSoundClipsPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic), "SoundClips");
-
-        _soundClipsPath = GetValue(settings, SoundClipsPathKey, defaultSoundClipsPath);
+        _soundClipsPath = GetValue(settings, SoundClipsPathKey, GetDefaultSoundClipsPath());
 
         _navigationPaneWidth = GetValue(settings, NavigationPaneWidthKey, 150.0);
         _isNavigationPaneOpen = GetValue(settings, IsNavigationPaneOpenKey, true);
@@ -35,6 +34,11 @@ public class SettingsModel
         _mainWindowHeight = GetValue(settings, MainWindowHeightKey, 0);
 
         _FirstRunCompleted = GetValue(settings, FirstRunCompletedKey, false);
+    }
+
+    public static string GetDefaultSoundClipsPath()
+    {
+        return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic), SoundClipsFolderName);
     }
 
     public int ThemeModeIndex
@@ -166,7 +170,7 @@ public class SettingsModel
         ThemeModeIndex = 0;
         AreNotificationsEnabled = true;
         DefaultTempo = 120;
-        SoundClipsPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic), "SoundClips");
+        SoundClipsPath = GetDefaultSoundClipsPath();
         NavigationPaneWidth = 150.0;
         FirstRunCompleted = true;
         MainWindowX = 0;
