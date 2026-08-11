@@ -2,6 +2,7 @@ using CyberFeedForward.MusicaMaestro.Models;
 using CyberFeedForward.MusicaMaestro.ViewModels;
 using CyberFeedForward.MusicaMaestro.Views;
 using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
 using Windows.Storage;
 
 namespace CyberFeedForward.MusicaMaestro.Services;
@@ -39,6 +40,26 @@ public class FirstRunService
         };
 
         await dialog.ShowAsync();
+
+        var soundClipsPath = viewModel.SoundClipsPath;
+        if (!string.IsNullOrWhiteSpace(soundClipsPath))
+        {
+            try
+            {
+                System.IO.Directory.CreateDirectory(soundClipsPath);
+            }
+            catch (Exception ex)
+            {
+                var errorDialog = new ContentDialog
+                {
+                    XamlRoot = window.Content.XamlRoot,
+                    Title = "Could not create SoundClips folder",
+                    Content = $"The SoundClips folder could not be created: {ex.Message}",
+                    CloseButtonText = "OK"
+                };
+                await errorDialog.ShowAsync();
+            }
+        }
         SetIsCompleted(true);
     }
 

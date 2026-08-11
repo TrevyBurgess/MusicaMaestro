@@ -62,4 +62,37 @@ public sealed partial class SettingsView : Page
     {
         ViewModel.Reset();
     }
+
+    private async void OpenSoundClipsFolderButton_Click(object sender, RoutedEventArgs e)
+    {
+        var path = ViewModel.SoundClipsPath;
+        if (string.IsNullOrWhiteSpace(path) || !System.IO.Directory.Exists(path))
+        {
+            var dialog = new ContentDialog
+            {
+                XamlRoot = XamlRoot,
+                Title = "SoundClips folder not found",
+                Content = "The SoundClips folder does not exist. Please browse for a valid folder first.",
+                CloseButtonText = "OK"
+            };
+            await dialog.ShowAsync();
+            return;
+        }
+
+        try
+        {
+            System.Diagnostics.Process.Start("explorer.exe", path);
+        }
+        catch (Exception ex)
+        {
+            var dialog = new ContentDialog
+            {
+                XamlRoot = XamlRoot,
+                Title = "Error",
+                Content = $"Failed to open the SoundClips folder: {ex.Message}",
+                CloseButtonText = "OK"
+            };
+            await dialog.ShowAsync();
+        }
+    }
 }

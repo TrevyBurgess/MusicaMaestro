@@ -9,7 +9,7 @@ public partial class SettingsViewModel : ViewModelBase
     public SettingsViewModel()
     {
         _model = new SettingsModel();
-        Title = "Settings";
+        Title = "Settings1";
     }
 
     public string Title { get; }

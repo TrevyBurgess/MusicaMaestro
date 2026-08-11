@@ -29,6 +29,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <TextBox
                     x:Name="SoundClipsPathTextBox"
@@ -43,6 +44,13 @@
                     AutomationProperties.Name="Browse for SoundClips folder"
                     Click="BrowseSoundClipsButton_Click"
                     Content="Browse..."
+                    VerticalAlignment="Bottom" />
+                <Button
+                    x:Name="OpenSoundClipsFolderButton"
+                    Grid.Column="2"
+                    AutomationProperties.Name="Open SoundClips folder in File Explorer"
+                    Click="OpenSoundClipsFolderButton_Click"
+                    Content="Open"
                     VerticalAlignment="Bottom" />
             </Grid>
 

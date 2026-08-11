@@ -172,11 +172,12 @@ public class SettingsModel
         DefaultTempo = 120;
         SoundClipsPath = GetDefaultSoundClipsPath();
         NavigationPaneWidth = 150.0;
-        FirstRunCompleted = true;
         MainWindowX = 0;
         MainWindowY = 0;
         MainWindowWidth = 0;
         MainWindowHeight = 0;
+
+        FirstRunCompleted = false;
     }
 
     private static void Save(string key, object value)

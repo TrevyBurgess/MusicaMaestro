@@ -12,12 +12,7 @@
 
 - Show first run dialog when app starts. 
 - Add a button to setting panel. when clicked, reset all settings to their default values
-
-
-
-
-
-
+- When the FirstRunDialog dialog is run, if the SoundClips folder doesn't exist, create it.
 
 
 ## Settings
@@ -29,6 +24,9 @@
 
 - Add a folder path to Settings called SoundClips. Include a folder selection button. Save changes.
 - Make default path of to Music\SoundClips\
+- Add a button next to the browse button in Settings. When clicked, open a Windows explorer windows pointing to the specified folder
+
+
 
 
 ## Library
