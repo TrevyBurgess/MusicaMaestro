@@ -1,3 +1,4 @@
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using CyberFeedForward.MusicaMaestro.ViewModels;
 
@@ -10,5 +11,11 @@ public sealed partial class LibraryView : Page
     public LibraryView()
     {
         InitializeComponent();
+        Unloaded += OnUnloaded;
+    }
+
+    private void OnUnloaded(object sender, RoutedEventArgs e)
+    {
+        ViewModel.Dispose();
     }
 }

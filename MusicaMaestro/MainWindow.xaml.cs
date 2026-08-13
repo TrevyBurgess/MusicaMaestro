@@ -26,6 +26,10 @@ public sealed partial class MainWindow : Window
         AppWindow.TitleBar.PreferredHeightOption = TitleBarHeightOption.Tall;
         AppWindow.SetIcon("Assets/AppIcon.ico");
 
+        var f11Accelerator = new KeyboardAccelerator { Key = VirtualKey.F11 };
+        f11Accelerator.Invoked += OnFullScreenAcceleratorInvoked;
+        Content.KeyboardAccelerators.Add(f11Accelerator);
+
         _settings = new SettingsModel();
         NavView.OpenPaneLength = _settings.NavigationPaneWidth;
         NavView.IsPaneOpen = _settings.IsNavigationPaneOpen;
@@ -147,5 +151,19 @@ public sealed partial class MainWindow : Window
         double newWidth = NavView.OpenPaneLength + delta;
         NavView.OpenPaneLength = Math.Clamp(newWidth, MinOpenPaneLength, MaxOpenPaneLength);
         e.Handled = true;
+    }
+
+    private void OnFullScreenAcceleratorInvoked(KeyboardAccelerator sender, KeyboardAcceleratorInvokedEventArgs args)
+    {
+        if (AppWindow.Presenter.Kind == AppWindowPresenterKind.FullScreen)
+        {
+            AppWindow.SetPresenter(AppWindowPresenterKind.Default);
+        }
+        else
+        {
+            AppWindow.SetPresenter(AppWindowPresenterKind.FullScreen);
+        }
+
+        args.Handled = true;
     }
 }

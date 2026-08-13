@@ -1,18 +1,49 @@
+using System.IO;
 using CyberFeedForward.MusicaMaestro.Models;
 
 namespace CyberFeedForward.MusicaMaestro.Services;
 
 public class MusicService
 {
+    private static readonly HashSet<string> AudioExtensions = new(StringComparer.OrdinalIgnoreCase)
+    {
+        ".mp3",
+        ".wav",
+        ".flac",
+        ".aac",
+        ".ogg",
+        ".wma",
+        ".m4a",
+        ".aiff",
+        ".opus"
+    };
+
     public List<Track> GetTracks()
     {
-        return new List<Track>
+        var settings = new SettingsModel();
+        var path = settings.SoundClipsPath;
+
+        if (string.IsNullOrWhiteSpace(path) || !Directory.Exists(path))
         {
-            new() { Title = "Piano Intro", Duration = "0:24", Instrument = "Piano" },
-            new() { Title = "Bass Line", Duration = "0:48", Instrument = "Bass" },
-            new() { Title = "Drum Loop", Duration = "1:12", Instrument = "Drums" },
-            new() { Title = "Synth Melody", Duration = "0:36", Instrument = "Synthesizer" },
-            new() { Title = "Guitar Riff", Duration = "0:52", Instrument = "Guitar" }
-        };
+            return new List<Track>();
+        }
+
+        try
+        {
+            return Directory
+                .EnumerateFiles(path)
+                .Where(file => AudioExtensions.Contains(Path.GetExtension(file)))
+                .Select(file => new Track
+                {
+                    Title = Path.GetFileNameWithoutExtension(file) ?? file,
+                    Instrument = (Path.GetExtension(file) ?? string.Empty).TrimStart('.').ToLowerInvariant(),
+                    Duration = string.Empty
+                })
+                .ToList();
+        }
+        catch
+        {
+            return new List<Track>();
+        }
     }
 }

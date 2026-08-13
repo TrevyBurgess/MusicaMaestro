@@ -14,7 +14,6 @@
 - Add a button to setting panel. when clicked, reset all settings to their default values
 - When the FirstRunDialog dialog is run, if the SoundClips folder doesn't exist, create it.
 
-
 ## Settings
 
 - Add a dropdown to Settings page. This will allow users set app theme for Dark mode, light mode, and System default.
@@ -26,11 +25,10 @@
 - Make default path of to Music\SoundClips\
 - Add a button next to the browse button in Settings. When clicked, open a Windows explorer windows pointing to the specified folder
 
-
-
+- Change App to Full screen when user types F11. Restore when user types F11 again.
 
 ## Library
 
-- 
-
+- List all music files in the SoundClips folder. Display it in the Library panel
+- Update Library panel when files in the SoundClips folder changes
 
