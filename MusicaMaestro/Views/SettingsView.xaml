@@ -59,6 +59,31 @@
                 AutomationProperties.Name="Reset all settings to their default values"
                 Click="ResetToDefaultsButton_Click"
                 Content="Reset to defaults" />
+
+            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="AI" />
+            <ComboBox
+                x:Name="AiProviderComboBox"
+                AutomationProperties.Name="AI provider"
+                Header="AI provider"
+                SelectedIndex="{Binding AiProvider, Mode=TwoWay}">
+                <ComboBoxItem Content="Local" />
+                <ComboBoxItem Content="Online" />
+            </ComboBox>
+            <TextBox
+                x:Name="AiEndpointTextBox"
+                AutomationProperties.Name="AI endpoint URL"
+                Header="Endpoint"
+                Text="{Binding AiEndpoint, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBox
+                x:Name="AiModelTextBox"
+                AutomationProperties.Name="AI model name"
+                Header="Model"
+                Text="{Binding AiModel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            <PasswordBox
+                x:Name="AiApiKeyPasswordBox"
+                AutomationProperties.Name="AI API key"
+                Header="API key"
+                Password="{Binding AiApiKey, Mode=TwoWay}" />
         </StackPanel>
     </Grid>
 </Page>

@@ -57,6 +57,46 @@ public partial class SettingsViewModel : ViewModelBase
         }
     }
 
+    public int AiProvider
+    {
+        get => _model.AiProvider;
+        set
+        {
+            _model.AiProvider = value;
+            OnPropertyChanged();
+        }
+    }
+
+    public string AiEndpoint
+    {
+        get => _model.AiEndpoint;
+        set
+        {
+            _model.AiEndpoint = value;
+            OnPropertyChanged();
+        }
+    }
+
+    public string AiModel
+    {
+        get => _model.AiModel;
+        set
+        {
+            _model.AiModel = value;
+            OnPropertyChanged();
+        }
+    }
+
+    public string AiApiKey
+    {
+        get => _model.AiApiKey;
+        set
+        {
+            _model.AiApiKey = value;
+            OnPropertyChanged();
+        }
+    }
+
     public void Reset()
     {
         _model.ResetToDefaults();
@@ -65,6 +105,10 @@ public partial class SettingsViewModel : ViewModelBase
         OnPropertyChanged(nameof(AreNotificationsEnabled));
         OnPropertyChanged(nameof(DefaultTempo));
         OnPropertyChanged(nameof(SoundClipsPath));
+        OnPropertyChanged(nameof(AiProvider));
+        OnPropertyChanged(nameof(AiEndpoint));
+        OnPropertyChanged(nameof(AiModel));
+        OnPropertyChanged(nameof(AiApiKey));
 
         ThemeChanged?.Invoke(ThemeModeIndex);
     }

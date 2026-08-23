@@ -98,6 +98,12 @@ public sealed partial class MainWindow : Window
                 case "editor":
                     NavFrame.Navigate(typeof(EditorView));
                     break;
+                case "musicsynthesis":
+                    NavFrame.Navigate(typeof(MusicSynthesisView));
+                    break;
+                case "help":
+                    NavFrame.Navigate(typeof(HelpView));
+                    break;
                 case "about":
                     NavFrame.Navigate(typeof(AboutView));
                     break;

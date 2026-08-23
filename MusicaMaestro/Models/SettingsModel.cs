@@ -16,6 +16,10 @@ public class SettingsModel
     public const string MainWindowHeightKey = "MainWindowHeight";
     public const string FirstRunCompletedKey = "FirstRunCompletedKey";
     public const string SoundClipsFolderName = "SoundClips";
+    public const string AiProviderKey = "AiProvider";
+    public const string AiEndpointKey = "AiEndpoint";
+    public const string AiModelKey = "AiModel";
+    public const string AiApiKeyKey = "AiApiKey";
 
     public SettingsModel()
     {
@@ -25,6 +29,11 @@ public class SettingsModel
         _defaultTempo = GetValue(settings, DefaultTempoKey, 120);
 
         _soundClipsPath = GetValue(settings, SoundClipsPathKey, GetDefaultSoundClipsPath());
+
+        _aiProvider = GetValue(settings, AiProviderKey, 0);
+        _aiEndpoint = GetValue(settings, AiEndpointKey, "http://localhost:1234/v1/chat/completions");
+        _aiModel = GetValue(settings, AiModelKey, string.Empty);
+        _aiApiKey = GetValue(settings, AiApiKeyKey, string.Empty);
 
         _navigationPaneWidth = GetValue(settings, NavigationPaneWidthKey, 150.0);
         _isNavigationPaneOpen = GetValue(settings, IsNavigationPaneOpenKey, true);
@@ -165,12 +174,60 @@ public class SettingsModel
     }
     private bool _FirstRunCompleted;
 
+    public int AiProvider
+    {
+        get => _aiProvider;
+        set
+        {
+            _aiProvider = value;
+            Save(AiProviderKey, value);
+        }
+    }
+    private int _aiProvider;
+
+    public string AiEndpoint
+    {
+        get => _aiEndpoint;
+        set
+        {
+            _aiEndpoint = value;
+            Save(AiEndpointKey, value);
+        }
+    }
+    private string _aiEndpoint;
+
+    public string AiModel
+    {
+        get => _aiModel;
+        set
+        {
+            _aiModel = value;
+            Save(AiModelKey, value);
+        }
+    }
+    private string _aiModel;
+
+    public string AiApiKey
+    {
+        get => _aiApiKey;
+        set
+        {
+            _aiApiKey = value;
+            Save(AiApiKeyKey, value);
+        }
+    }
+    private string _aiApiKey;
+
     public void ResetToDefaults()
     {
         ThemeModeIndex = 0;
         AreNotificationsEnabled = true;
         DefaultTempo = 120;
         SoundClipsPath = GetDefaultSoundClipsPath();
+        AiProvider = 0;
+        AiEndpoint = "http://localhost:1234/v1/chat/completions";
+        AiModel = string.Empty;
+        AiApiKey = string.Empty;
         NavigationPaneWidth = 150.0;
         MainWindowX = 0;
         MainWindowY = 0;
