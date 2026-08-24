@@ -12,11 +12,26 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
         <TextBlock Style="{StaticResource TitleTextBlockStyle}" Text="{x:Bind ViewModel.Title, Mode=OneWay}" />
-        <Grid Grid.Row="1" ColumnSpacing="8">
+        <StackPanel
+            x:Name="AiNotConfiguredPanel"
+            Grid.Row="1"
+            x:Load="{x:Bind ViewModel.IsAiNotConfigured, Mode=OneWay}"
+            Spacing="8">
+            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}" Text="AI not configured" />
+            <TextBlock
+                Text="Open Settings from the navigation menu and enter your AI endpoint, model, and API key to start generating music."
+                TextWrapping="Wrap" />
+        </StackPanel>
+        <Grid
+            x:Name="QueryInputGrid"
+            Grid.Row="1"
+            x:Load="{x:Bind ViewModel.IsAiConfigured, Mode=OneWay}"
+            ColumnSpacing="8">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
@@ -44,16 +59,17 @@
             Grid.Row="2"
             IsActive="{x:Bind ViewModel.IsGenerating, Mode=OneWay}" />
 
-        <ScrollViewer Grid.Row="3">
-            <StackPanel Spacing="8">
-                <TextBlock
-                    Foreground="Red"
-                    Text="{x:Bind ViewModel.ErrorMessage, Mode=OneWay}"
-                    TextWrapping="Wrap" />
-                <TextBlock
-                    Text="{x:Bind ViewModel.Response, Mode=OneWay}"
-                    TextWrapping="Wrap" />
-            </StackPanel>
+        <TextBlock
+            x:Name="ErrorMessageTextBlock"
+            Grid.Row="3"
+            Foreground="Red"
+            Text="{x:Bind ViewModel.ErrorMessage, Mode=OneWay}"
+            TextWrapping="Wrap" />
+
+        <ScrollViewer Grid.Row="4">
+            <TextBlock
+                Text="{x:Bind ViewModel.Response, Mode=OneWay}"
+                TextWrapping="Wrap" />
         </ScrollViewer>
     </Grid>
 </Page>

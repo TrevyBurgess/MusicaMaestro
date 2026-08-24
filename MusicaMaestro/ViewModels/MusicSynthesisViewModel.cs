@@ -67,7 +67,13 @@ public class MusicSynthesisViewModel : ViewModelBase
         }
     }
 
-    public bool CanGenerate => !IsGenerating && !string.IsNullOrWhiteSpace(Query);
+    public bool IsAiConfigured =>
+        !string.IsNullOrWhiteSpace(_settings.AiEndpoint) &&
+        (_settings.AiProvider == 0 || (!string.IsNullOrWhiteSpace(_settings.AiModel) && !string.IsNullOrWhiteSpace(_settings.AiApiKey)));
+
+    public bool IsAiNotConfigured => !IsAiConfigured;
+
+    public bool CanGenerate => IsAiConfigured && !IsGenerating && !string.IsNullOrWhiteSpace(Query);
 
     public async Task GenerateAsync()
     {

@@ -43,6 +43,6 @@
 - Add a tab to the list of pages called MusicSynthesis
 - Add functionality to the MusicSynthesis page to allow a user to enter AI queries. Add settings to connect to AI models, both locally and online
 - Add a help page explaining how to set up connecting to an AI model, both locally and online
-
+- Show a message to set up AI settings in the MusicSynthesis tab if setup isn't complete, and hide the prompt textbox and generate button until setup is complete
 
 
